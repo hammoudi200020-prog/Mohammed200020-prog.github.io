@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohammed Ameen Alshameri — Full-Stack Developer working on AI applications, frontend, backend, databases, IT support, and networking. Based in Jeddah, Saudi Arabia.">
+    <title>Mohammed Alshameri | Full-Stack Developer & AI Applications</title>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --background: #0b1120;
+            --surface: #111b2e;
+            --text: #edf2fa;
+            --muted: #aab8cd;
+            --accent: #6ee7c0;
+            --border: #29364d;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+        body {
+            margin: 0;
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.75;
+        }
+        a { color: inherit; }
+        a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+        .container { width: min(1120px, 90%); margin-inline: auto; }
+        h1, h2, h3, p { margin-top: 0; }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 16px;
+            z-index: 100;
+            padding: 12px 18px;
+            background: var(--accent);
+            color: var(--background);
+        }
+        .skip-link:focus { top: 12px; }
+
+        /* Navigation */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .navigation {
+            min-height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .logo span { color: var(--accent); }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 24px;
+        }
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 100px 0 65px;
+            background: var(--background);
+        }
+        .hero-photo {
+            position: absolute;
+            z-index: -2;
+            top: 0;
+            right: 0;
+            width: 62%;
+            height: 100%;
+            overflow: hidden;
+            background: #23364d;
+            -webkit-mask-image: linear-gradient(
+                to right, transparent 0%,
+                rgba(0, 0, 0, 0.35) 18%, #000 48%
+            );
+            mask-image: linear-gradient(
+                to right, transparent 0%,
+                rgba(0, 0, 0, 0.35) 18%, #000 48%
+            );
+        }
+        .hero-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 18%;
+            filter: grayscale(100%) contrast(1.08);
+            mix-blend-mode: luminosity;
+            opacity: 0.5;
+        }
+        .hero-photo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(11, 24, 43, 0.42);
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(11, 17, 32, 0.22) 0%,
+                    transparent 25%,
+                    rgba(11, 17, 32, 0.12) 55%,
+                    var(--background) 95%
+                ),
+                linear-gradient(
+                    to right,
+                    var(--background) 12%,
+                    rgba(11, 17, 32, 0.95) 30%,
+                    rgba(11, 17, 32, 0.7) 48%,
+                    rgba(11, 17, 32, 0.12) 78%,
+                    rgba(11, 17, 32, 0.25) 100%
+                );
+        }
+        .eyebrow {
+            margin-bottom: 18px;
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        h1 {
+            max-width: 760px;
+            margin-bottom: 25px;
+            font-size: clamp(38px, 5.3vw, 66px);
+            line-height: 1.14;
+            letter-spacing: -2px;
+        }
+        h1 span { color: var(--accent); }
+        .hero-subtitle {
+            max-width: 680px;
+            margin-bottom: 18px;
+            font-size: clamp(16px, 2vw, 20px);
+            font-weight: 600;
+        }
+        .hero-description {
+            max-width: 620px;
+            color: #c2cddd;
+            font-size: 16px;
+        }
+        .location {
+            max-width: 620px;
+            margin: 24px 0 28px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+        .buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 11px 22px;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            background: var(--accent);
+            color: var(--background);
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .button:hover { transform: translateY(-3px); background: #94f0d3; }
+        .button.secondary {
+            border-color: #46546b;
+            background: rgba(11, 17, 32, 0.65);
+            color: var(--text);
+        }
+        .button.secondary:hover {
+            border-color: var(--accent);
+            background: var(--surface);
+        }
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 55px;
+        }
+        .highlight {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-left: 2px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            background: rgba(17, 27, 46, 0.9);
+        }
+        .highlight strong { display: block; margin-bottom: 5px; font-size: 16px; }
+        .highlight span { color: var(--muted); font-size: 13px; }
+
+        /* Shared sections */
+        section { padding: 75px 0; }
+        .section-heading { margin-bottom: 32px; }
+        .section-heading .eyebrow { margin-bottom: 10px; }
+        h2 {
+            margin-bottom: 14px;
+            font-size: clamp(28px, 4vw, 38px);
+            line-height: 1.25;
+            letter-spacing: -1px;
+        }
+        h3 { margin-bottom: 14px; font-size: 21px; line-height: 1.4; }
+        .section-description { max-width: 700px; color: var(--muted); }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+            gap: 40px;
+            align-items: start;
+        }
+        .about-copy p { color: var(--muted); }
+        .info-panel, .education-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+        }
+        .info-row + .info-row { margin-top: 22px; }
+        .info-label {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--accent);
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .info-value { font-size: 14px; }
+
+        /* Projects: full-width rows */
+        .projects-section, .skills-section {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: #0e1626;
+        }
+        .projects-list {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 26px;
+        }
+        .project-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+            transition: border-color 0.2s;
+        }
+        .project-card:hover { border-color: var(--accent); }
+        .project-card.text-only { grid-template-columns: minmax(0, 1fr); }
+        .project-media {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+            padding: 18px;
+            border-right: 1px solid var(--border);
+            background: #0b1424;
+        }
+        .project-image-link { display: block; text-decoration: none; }
+        .project-image-link img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .image-caption {
+            display: block;
+            margin-top: 10px;
+            color: var(--accent);
+            font-size: 12px;
+            text-align: right;
+        }
+        .project-body { min-width: 0; padding: 30px; }
+        .project-category {
+            margin-bottom: 16px;
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .project-body > p, .feature-list { color: var(--muted); font-size: 14px; }
+        .feature-list { margin: 0 0 20px; padding-left: 18px; }
+        .feature-list li { margin-bottom: 7px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            padding: 5px 10px;
+            border: 1px solid #30433f;
+            border-radius: 5px;
+            background: #142f2b;
+            color: #a5ebd4;
+            font-size: 11px;
+        }
+
+        /* Project galleries */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .gallery-item {
+            display: block;
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            text-decoration: none;
+            transition: border-color 0.2s;
+        }
+        .facilities-gallery .gallery-item:first-child { grid-column: 1 / -1; }
+        .gallery-item:hover { border-color: var(--accent); }
+        .gallery-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16 / 10;
+            padding: 6px;
+            background: #0b1424;
+        }
+        .facilities-gallery .gallery-item:first-child .gallery-image {
+            aspect-ratio: 16 / 9;
+        }
+        .gallery-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .gallery-caption {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 10px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+        }
+        .gallery-caption span:last-child { color: var(--accent); }
+
+        /* Experience */
+        .experience-list { display: grid; gap: 24px; }
+        .experience-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+        }
+        .experience-header {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: start;
+            gap: 20px;
+            padding: 28px 30px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        .experience-company {
+            margin: 0 0 9px;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .experience-role { margin: 0; font-size: 23px; line-height: 1.4; }
+        .experience-specialty {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+        .experience-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            padding-top: 2px;
+        }
+        .experience-date {
+            color: var(--muted);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        .experience-type {
+            padding: 4px 11px;
+            border: 1px solid #30433f;
+            border-radius: 6px;
+            background: #142f2b;
+            color: #a5ebd4;
+            font-size: 11px;
+        }
+        .experience-body { padding: 24px 30px 28px; }
+        .experience-body ul {
+            margin: 0;
+            padding-left: 19px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+        .experience-body li { padding-left: 4px; margin-bottom: 12px; }
+        .experience-body li:last-child { margin-bottom: 0; }
+        .experience-body li::marker { color: var(--accent); }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+        .skill-card {
+            min-width: 0;
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            transition: border-color 0.2s;
+        }
+        .skill-card:hover { border-color: var(--accent); }
+        .skill-number {
+            display: inline-block;
+            margin-bottom: 14px;
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .skill-card h3 { margin-bottom: 10px; font-size: 20px; }
+        .skill-description { margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag {
+            padding: 6px 11px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #0d1728;
+            color: #d5dfed;
+            font-size: 12px;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 24px;
+        }
+        .education-card p { color: var(--muted); font-size: 14px; }
+        .education-card p:last-child { margin-bottom: 0; }
+
+        /* Contact */
+        .contact-section { padding-top: 30px; }
+        .contact-panel {
+            padding: 55px 35px;
+            border: 1px solid #32564e;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #142e2b, #111b2e);
+            text-align: center;
+        }
+        .contact-panel > p {
+            max-width: 650px;
+            margin-inline: auto;
+            color: var(--muted);
+        }
+        .contact-panel > .eyebrow { color: var(--accent); }
+        .contact-panel .buttons { justify-content: center; margin-top: 25px; }
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 25px;
+            margin-top: 26px;
+            font-size: 14px;
+        }
+        .contact-details a { text-underline-offset: 4px; overflow-wrap: anywhere; }
+
+        footer {
+            padding: 25px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 12px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .footer-content p { margin: 0; }
+
+        /* Mobile */
+        @media (max-width: 760px) {
+            html { scroll-padding-top: 135px; }
+            .navigation {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 14px 0;
+            }
+            .logo { font-size: 19px; }
+            .nav-links { gap: 10px 20px; }
+            .nav-links a { font-size: 12px; }
+            .hero { padding: 65px 0 45px; }
+            .hero-photo {
+                width: 100%;
+                height: 680px;
+                opacity: 0.7;
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
+            .hero-photo img { object-position: 60% top; }
+            .hero::after {
+                background:
+                    linear-gradient(
+                        to bottom,
+                        rgba(11, 17, 32, 0.35),
+                        rgba(11, 17, 32, 0.65) 45%,
+                        var(--background) 75%
+                    ),
+                    linear-gradient(
+                        to right,
+                        rgba(11, 17, 32, 0.8),
+                        rgba(11, 17, 32, 0.25)
+                    );
+            }
+            h1 { letter-spacing: -1px; }
+            .hero-description { font-size: 15px; }
+            .highlights, .about-grid, .project-card, .skills-grid, .education-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .highlights { margin-top: 35px; }
+            section { padding: 50px 0; }
+            .project-media {
+                border-right: 0;
+                border-bottom: 1px solid var(--border);
+            }
+            .project-body, .skill-card { padding: 24px; }
+            .experience-header {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 16px;
+                padding: 24px;
+            }
+            .experience-meta {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                padding-top: 0;
+            }
+            .experience-role { font-size: 21px; }
+            .experience-body { padding: 22px 24px 26px; }
+            .contact-panel { padding: 35px 22px; }
+        }
+
+        @media (max-width: 420px) {
+            .project-gallery { grid-template-columns: minmax(0, 1fr); }
+            .facilities-gallery .gallery-item:first-child { grid-column: auto; }
+            .gallery-image,
+            .facilities-gallery .gallery-item:first-child .gallery-image {
+                aspect-ratio: 16 / 10;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .button, .project-card, .gallery-item, .skill-card { transition: none; }
+            .button:hover { transform: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <nav class="container navigation" aria-label="Main navigation">
+            <a class="logo" href="#home">
+                Mohammed <span>Alshameri.</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="hero" id="home">
+            <div class="hero-photo" aria-hidden="true">
+                <img src="profile.png" alt="" fetchpriority="high">
+            </div>
+
+            <div class="container">
+                <p class="eyebrow">Mohammed Ameen Alshameri</p>
+                <h1>
+                    Building Complete Applications.
+                    <span>Turning AI into Practical Solutions.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Full-Stack Developer · AI Applications · IT & Networking
+                </p>
+                <p class="hero-description">
+                    I build applications across frontend, backend, and
+                    databases, integrating machine learning and generative
+                    AI where they add practical value. My experience also
+                    includes IT support, networking, servers, and
+                    operational systems.
+                </p>
+                <p class="location">
+                    Jeddah, Saudi Arabia · Open to opportunities across
+                    Saudi Arabia and remotely
+                </p>
+
+                <div class="buttons">
+                    <a class="button" href="#projects">Explore My Projects</a>
+                    <a class="button secondary"
+                       href="Mohammed_Alshameri_CV.pdf"
+                       download="Mohammed_Alshameri_CV.pdf">Download CV</a>
+                    <a class="button secondary" href="#contact">Get in Touch</a>
+                    <a class="button secondary"
+                       href="https://github.com/hammoudi200020-prog"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Visit my GitHub profile (opens in a new tab)">GitHub ↗</a>
+                </div>
+
+                <div class="highlights">
+                    <div class="highlight">
+                        <strong>Full-Stack Development</strong>
+                        <span>Frontend interfaces, backend logic, and databases</span>
+                    </div>
+                    <div class="highlight">
+                        <strong>AI Applications</strong>
+                        <span>Machine learning, AI integration, and reporting</span>
+                    </div>
+                    <div class="highlight">
+                        <strong>IT & Networking</strong>
+                        <span>Networks, servers, and connected operational systems</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">About Me</p>
+                    <h2>From user interfaces to the systems behind them.</h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-copy">
+                        <p>
+                            I am Mohammed Ameen Alshameri, a Full-Stack
+                            Developer and Bachelor of Computer Applications
+                            graduate from Bangalore City University,
+                            Class of 2025, based in Jeddah, Saudi Arabia.
+                        </p>
+                        <p>
+                            I develop frontend interfaces, backend services,
+                            and database-driven workflows. My projects
+                            include an AI shipment-delay risk prediction
+                            application, a facilities management platform,
+                            a service-booking system, and a network device
+                            availability monitor.
+                        </p>
+                        <p>
+                            My work combines Python, FastAPI, machine
+                            learning, Gemini AI integration, PHP, Java,
+                            JavaScript, and SQL. I enjoy connecting these
+                            technologies to create applications that
+                            address practical business needs.
+                        </p>
+                        <p>
+                            At Creek Obhur, I combined operations supervision
+                            with hands-on technical work involving networks,
+                            servers, audio systems, and electronic gates.
+                            My experience at TATA strengthened my ability
+                            to understand customer requirements and
+                            communicate technology solutions clearly.
+                        </p>
+                    </div>
+
+                    <aside class="info-panel" aria-label="Profile details">
+                        <div class="info-row">
+                            <span class="info-label">Based in</span>
+                            <span class="info-value">Jeddah, Saudi Arabia</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Focus</span>
+                            <span class="info-value">Full-Stack Development & AI Applications</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Education</span>
+                            <span class="info-value">Bachelor of Computer Applications · 2025</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Additional experience</span>
+                            <span class="info-value">IT Support, Networking & Operations</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Languages</span>
+                            <span class="info-value">Arabic · English · Hindi</span>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Selected Work</p>
+                    <h2>Projects built around practical problems.</h2>
+                    <p class="section-description">
+                        Applications spanning AI, full-stack development,
+                        operational workflows, and network monitoring.
+                        Select any screenshot to view it in full.
+                    </p>
+                </div>
+
+                <div class="projects-list">
+                    <!-- Shipment project -->
+                    <article class="project-card">
+                        <div class="project-media">
+                            <a class="project-image-link"
+                               href="shipment.png"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Open shipment prediction screenshot in a new tab">
+                                <img src="shipment.png"
+                                     alt="AI shipment delay risk prediction application"
+                                     loading="lazy" decoding="async">
+                                <span class="image-caption">View full screenshot ↗</span>
+                            </a>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-category">
+                                AI / Machine Learning / Application Development
+                            </div>
+                            <h3>AI Shipment Delay Risk Prediction</h3>
+                            <p>
+                                Developed an application that turns shipment
+                                data into delay probabilities, risk
+                                classifications, and mitigation recommendations.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Random Forest model connected to a FastAPI backend.</li>
+                                <li>Bulk CSV analysis and Gemini-powered management insights.</li>
+                                <li>Downloadable PDF reports to communicate results.</li>
+                            </ul>
+                            <div class="tags" aria-label="Technologies">
+                                <span class="tag">Python</span>
+                                <span class="tag">Scikit-learn</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">Gemini AI</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Facilities project -->
+                    <article class="project-card">
+                        <div class="project-media">
+                            <div class="project-gallery facilities-gallery"
+                                 role="group"
+                                 aria-label="Facilities management screenshots">
+                                <a class="gallery-item"
+                                   href="facilities-1.png"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="Open facilities home page screenshot">
+                                    <div class="gallery-image">
+                                        <img src="facilities-1.png"
+                                             alt="Facilities management home page"
+                                             loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="gallery-caption">
+                                        <span>01 · Home Page</span>
+                                        <span aria-hidden="true">↗</span>
+                                    </div>
+                                </a>
+
+                                <a class="gallery-item"
+                                   href="facilities-2.png"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="Open facilities login screenshot">
+                                    <div class="gallery-image">
+                                        <img src="facilities-2.png"
+                                             alt="Facilities management login page"
+                                             loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="gallery-caption">
+                                        <span>02 · Login Page</span>
+                                        <span aria-hidden="true">↗</span>
+                                    </div>
+                                </a>
+
+                                <a class="gallery-item"
+                                   href="facilities-3.png"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="Open facilities HR screenshot">
+                                    <div class="gallery-image">
+                                        <img src="facilities-3.png"
+                                             alt="Facilities management HR dashboard"
+                                             loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="gallery-caption">
+                                        <span>03 · HR Dashboard</span>
+                                        <span aria-hidden="true">↗</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-category">
+                                Full-Stack Development / Operations
+                            </div>
+                            <h3>Waterfront & Facilities Management</h3>
+                            <p>
+                                Built a role-based web platform covering
+                                frontend dashboards, backend workflows,
+                                and MySQL data management for managers,
+                                HR staff, and employees.
+                            </p>
+                            <ul class="feature-list">
+                                <li>
+                                    Employee management, task coordination,
+                                    attendance, and leave requests.
+                                </li>
+                                <li>
+                                    Inspections, incident reporting,
+                                    and maintenance tracking.
+                                </li>
+                                <li>Database-driven operational reports.</li>
+                            </ul>
+                            <div class="tags" aria-label="Technologies">
+                                <span class="tag">PHP</span>
+                                <span class="tag">MySQL</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">HTML & CSS</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Booking project -->
+                    <article class="project-card text-only">
+                        <div class="project-body">
+                            <div class="project-category">
+                                Full-Stack Development / Graduation Project
+                            </div>
+                            <h3>Utility Services Booking Platform</h3>
+                            <p>
+                                Designed and developed a web application
+                                connecting customers with household service
+                                providers, combining user-facing pages,
+                                Java backend logic, and an Oracle database.
+                            </p>
+                            <ul class="feature-list">
+                                <li>
+                                    Separate administrator, customer,
+                                    and service-provider modules.
+                                </li>
+                                <li>Service requests, payments, and booking tracking.</li>
+                                <li>
+                                    Developed with Servlets, JSP, and JDBC,
+                                    running on Apache Tomcat.
+                                </li>
+                            </ul>
+                            <div class="tags" aria-label="Technologies">
+                                <span class="tag">Java</span>
+                                <span class="tag">JSP & Servlets</span>
+                                <span class="tag">Oracle 11g</span>
+                                <span class="tag">JDBC</span>
+                                <span class="tag">Apache Tomcat</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Network project -->
+                    <article class="project-card">
+                        <div class="project-media">
+                            <div class="project-gallery"
+                                 role="group"
+                                 aria-label="Network monitoring screenshots">
+                                <a class="gallery-item"
+                                   href="network-1.png"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="Open network overview screenshot">
+                                    <div class="gallery-image">
+                                        <img src="network-1.png"
+                                             alt="Network monitoring overview page"
+                                             loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="gallery-caption">
+                                        <span>01 · Overview</span>
+                                        <span aria-hidden="true">↗</span>
+                                    </div>
+                                </a>
+
+                                <a class="gallery-item"
+                                   href="network-2.png"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="Open network incidents screenshot">
+                                    <div class="gallery-image">
+                                        <img src="network-2.png"
+                                             alt="Network monitoring incidents page"
+                                             loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="gallery-caption">
+                                        <span>02 · Incidents</span>
+                                        <span aria-hidden="true">↗</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-body">
+                            <div class="project-category">
+                                IT Infrastructure / Networking
+                            </div>
+                            <h3>Network Device Availability Monitor</h3>
+                            <p>
+                                Built a tool that checks network device
+                                availability and reports online and offline
+                                status to support connectivity troubleshooting.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Checks whether monitored devices are reachable.</li>
+                                <li>Presents online and offline status.</li>
+                                <li>
+                                    Includes Overview and Incidents pages
+                                    for reviewing monitoring information.
+                                </li>
+                            </ul>
+                            <div class="tags" aria-label="Project focus">
+                                <span class="tag">Networking</span>
+                                <span class="tag">Connectivity</span>
+                                <span class="tag">Monitoring</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Professional Experience</p>
+                    <h2>Technical work grounded in real operations.</h2>
+                    <p class="section-description">
+                        Hands-on experience supporting operational
+                        technology, coordinating teams, and understanding
+                        customer needs.
+                    </p>
+                </div>
+
+                <div class="experience-list">
+                    <article class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <p class="experience-company">Creek Obhur</p>
+                                <h3 class="experience-role">Operations Supervisor</h3>
+                                <p class="experience-specialty">
+                                    Operations, IT Support & Networking
+                                </p>
+                            </div>
+                            <div class="experience-meta">
+                                <span class="experience-date">January – September 2026</span>
+                                <span class="experience-type">Professional Experience</span>
+                            </div>
+                        </div>
+                        <div class="experience-body">
+                            <ul>
+                                <li>
+                                    Supervised daily operations, coordinated
+                                    staff activities, and monitored task
+                                    completion and service standards.
+                                </li>
+                                <li>
+                                    Provided hands-on IT and networking
+                                    support across the site's operational
+                                    environment.
+                                </li>
+                                <li>
+                                    Worked with servers and investigated
+                                    network and connectivity issues affecting
+                                    day-to-day operations.
+                                </li>
+                                <li>
+                                    Supported audio systems and electronic
+                                    gates, troubleshooting technical and
+                                    connectivity problems.
+                                </li>
+                                <li>
+                                    Combined operational oversight with
+                                    technical problem-solving to help keep
+                                    staff and site systems working effectively.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <p class="experience-company">TATA</p>
+                                <h3 class="experience-role">IT Service Promotion</h3>
+                                <p class="experience-specialty">
+                                    Digital Marketing Strategy Internship
+                                </p>
+                            </div>
+                            <div class="experience-meta">
+                                <span class="experience-date">February – May 2025</span>
+                                <span class="experience-type">Internship</span>
+                            </div>
+                        </div>
+                        <div class="experience-body">
+                            <ul>
+                                <li>
+                                    Engaged with customers to understand
+                                    their requirements and recommend
+                                    suitable technology solutions.
+                                </li>
+                                <li>
+                                    Promoted IT services through clear
+                                    customer communication and
+                                    solution-oriented selling.
+                                </li>
+                                <li>
+                                    Gained experience in digital marketing
+                                    strategy and planning for IT
+                                    service promotion.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Technical Toolkit</p>
+                    <h2>What I work with.</h2>
+                    <p class="section-description">
+                        From frontend interfaces and backend development
+                        to AI applications, databases, and IT infrastructure.
+                    </p>
+                </div>
+
+                <div class="skills-grid">
+                    <article class="skill-card">
+                        <span class="skill-number">01 / FRONTEND</span>
+                        <h3>Frontend Development</h3>
+                        <p class="skill-description">
+                            Building user-facing pages, dashboards, and
+                            interfaces for database-driven web applications.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">JSP</span>
+                            <span class="skill-tag">Role-Based Interfaces</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-number">02 / BACKEND</span>
+                        <h3>Backend & API Development</h3>
+                        <p class="skill-description">
+                            Developing application logic, APIs, and
+                            database connections that power web features.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Java Servlets</span>
+                            <span class="skill-tag">SQLAlchemy</span>
+                            <span class="skill-tag">JDBC</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-number">03 / AI</span>
+                        <h3>AI & Machine Learning</h3>
+                        <p class="skill-description">
+                            Connecting predictive models and generative
+                            AI with practical application workflows.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">Random Forest</span>
+                            <span class="skill-tag">Gemini AI</span>
+                            <span class="skill-tag">Risk Prediction</span>
+                            <span class="skill-tag">AI Integration</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-number">04 / DATA</span>
+                        <h3>Databases & Reporting</h3>
+                        <p class="skill-description">
+                            Working with relational data and producing
+                            reports that communicate application results.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Oracle 11g</span>
+                            <span class="skill-tag">CSV Analysis</span>
+                            <span class="skill-tag">PDF Reports</span>
+                            <span class="skill-tag">Operational Reporting</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-number">05 / NETWORKING</span>
+                        <h3>Networking & Infrastructure</h3>
+                        <p class="skill-description">
+                            Supporting connectivity and investigating
+                            network issues across connected site systems.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Routing & Switching</span>
+                            <span class="skill-tag">Subnetting</span>
+                            <span class="skill-tag">Packet Tracer</span>
+                            <span class="skill-tag">Troubleshooting</span>
+                            <span class="skill-tag">Device Monitoring</span>
+                            <span class="skill-tag">Server Support</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-number">06 / SYSTEMS</span>
+                        <h3>Systems & Technical Support</h3>
+                        <p class="skill-description">
+                            Working with operating systems, virtual
+                            environments, and operational technology.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Windows</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">Kali Linux</span>
+                            <span class="skill-tag">VMware</span>
+                            <span class="skill-tag">VirtualBox</span>
+                            <span class="skill-tag">Audio Systems</span>
+                            <span class="skill-tag">Electronic Gates</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-number">07 / TOOLS</span>
+                        <h3>Programming & Development Tools</h3>
+                        <p class="skill-description">
+                            Using programming languages and local tools
+                            to build, run, and work with application projects.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">Apache Tomcat</span>
+                            <span class="skill-tag">XAMPP</span>
+                            <span class="skill-tag">phpMyAdmin</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-number">08 / BUSINESS</span>
+                        <h3>Operations & Client Communication</h3>
+                        <p class="skill-description">
+                            Bringing operational understanding and
+                            customer communication to technical work.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Team Coordination</span>
+                            <span class="skill-tag">Task Monitoring</span>
+                            <span class="skill-tag">Customer Requirements</span>
+                            <span class="skill-tag">IT Service Promotion</span>
+                            <span class="skill-tag">Issue Resolution</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Background</p>
+                    <h2>Education & Credentials.</h2>
+                </div>
+
+                <div class="education-grid">
+                    <article class="education-card">
+                        <h3>Bachelor of Computer Applications</h3>
+                        <p>Bangalore City University, India</p>
+                        <p>Karnataka College of Management and Science</p>
+                        <p>September 2022 – July 2025</p>
+                    </article>
+
+                    <article class="education-card">
+                        <h3>Professional Credentials</h3>
+                        <p>
+                            Internship Certificate — Digital Marketing
+                            Strategy for IT Service Promotion<br>
+                            TATA · 2025
+                        </p>
+                        <p>
+                            Certificate of Experience — Operations Supervisor<br>
+                            Creek Obhur · 2026
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="contact-panel">
+                    <p class="eyebrow">Let's Connect</p>
+                    <h2>Have a problem worth solving?</h2>
+                    <p>
+                        I welcome conversations about full-stack development,
+                        AI applications, IT support, networking,
+                        and data reporting opportunities.
+                    </p>
+
+                    <div class="buttons">
+                        <a class="button" href="mailto:it.maa0019@gmail.com">Email Me</a>
+                        <a class="button secondary"
+                           href="Mohammed_Alshameri_CV.pdf"
+                           download="Mohammed_Alshameri_CV.pdf">Download CV</a>
+                        <a class="button secondary" href="tel:+966561902172">Call Me</a>
+                        <a class="button secondary"
+                           href="https://github.com/hammoudi200020-prog"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Visit my GitHub profile (opens in a new tab)">GitHub ↗</a>
+                    </div>
+
+                    <div class="contact-details">
+                        <a href="mailto:it.maa0019@gmail.com">it.maa0019@gmail.com</a>
+                        <a href="tel:+966561902172">+966 56 190 2172</a>
+                        <span>Jeddah, Saudi Arabia</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>Mohammed Ameen Alshameri</p>
+            <p>Full-Stack Development · AI · IT & Networking</p>
+        </div>
+    </footer>
+</body>
+</html>
